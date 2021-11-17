@@ -121,7 +121,7 @@ const ProductCard: FC<Props> = ({
                     src={product.images[0]?.url || placeholderImg}
                     height={540}
                     width={540}
-                    quality="100"
+                    quality="85"
                     layout="responsive"
                     {...imgProps}
                   />

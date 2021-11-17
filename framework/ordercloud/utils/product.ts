@@ -13,7 +13,7 @@ export function normalize(product: RawProduct): Product {
       })) 
       : [],
     price: {
-      value: product.PriceSchedule?.PriceBreaks?.length ? product.PriceSchedule.PriceBreaks[0].Price : -1,
+      value: product.PriceSchedule?.PriceBreaks?.length ? product.PriceSchedule.PriceBreaks[0].Price * 1.30 : -1,
       currencyCode: product.xp.Currency,
     },
     variants: product.xp.Variants?.length

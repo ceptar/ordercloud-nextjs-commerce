@@ -24,6 +24,16 @@ export interface RawVariant {
   Specs: RawVariantSpec[]
 }
 
+export interface RawImages {
+  ThumbnailUrl: string
+  Url: string
+}
+
+export interface RawPriceBreaks {
+  Quantity: number
+  Price: number
+}
+
 export interface RawProduct {
   OwnerID: string
   DefaultPriceScheduleID: string | null
@@ -43,12 +53,13 @@ export interface RawProduct {
   Inventory: null
   DefaultSupplierID: null
   AllSuppliersCanSell: boolean
+  PriceSchedule: {
+    PriceBreaks: RawPriceBreaks[]
+  }
   xp: {
     Price: number
-    PriceCurrency: string
-    Images: {
-      url: string
-    }[]
+    Currency: string
+    Images?: RawImages[]
     Variants?: RawVariant[]
     Specs?: RawSpec[]
   }

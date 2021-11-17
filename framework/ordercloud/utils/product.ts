@@ -8,10 +8,13 @@ export function normalize(product: RawProduct): Product {
     name: product.Name,
     description: product.Description,
     slug: product.ID,
-    images: product.xp.Images,
+    images: product.xp?.Images?.length ? product.xp.Images.map((img) => ({
+      url: img.Url
+      })) 
+      : [],
     price: {
-      value: product.xp.Price,
-      currencyCode: product.xp.PriceCurrency,
+      value: product.PriceSchedule?.PriceBreaks?.length ? product.PriceSchedule.PriceBreaks[0].Price : -1,
+      currencyCode: product.xp.Currency,
     },
     variants: product.xp.Variants?.length
       ? product.xp.Variants.map((variant) => ({

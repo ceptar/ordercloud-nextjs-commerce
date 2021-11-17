@@ -4,6 +4,9 @@ export function formatCart(
   cart: OrdercloudCart,
   lineItems: OrdercloudLineItem[]
 ): Cart {
+
+  console.info(lineItems);
+
   return {
     id: cart.ID,
     customerId: cart.FromUserID,
@@ -25,17 +28,18 @@ export function formatCart(
         id: lineItem.Variant ? String(lineItem.Variant.ID) : '',
         sku: lineItem.ID,
         name: lineItem.Product.Name,
-        image: {
-          url: lineItem.Product.xp?.Images?.[0]?.url,
-        },
+        /*image: {
+          url: "https://ordercloudheadstarttest.blob.core.windows.net/assets/8738f5db-a2c3-459b-bf7a-3a458e6d7bf5",
+           lineItem.Product.xp?.Images?.[0]?.url, 
+        },*/
         requiresShipping: Boolean(lineItem.ShippingAddress),
-        price: lineItem.UnitPrice,
-        listPrice: lineItem.UnitPrice,
+        price: lineItem.UnitPrice * 1.30,
+        listPrice: lineItem.UnitPrice * 1.30,
       },
     })),
-    lineItemsSubtotalPrice: cart.Subtotal,
-    subtotalPrice: cart.Subtotal,
-    totalPrice: cart.Total,
+    lineItemsSubtotalPrice: cart.Subtotal * 1.30,
+    subtotalPrice: cart.Subtotal * 1.30,
+    totalPrice: cart.Total * 1.30,
     discounts: [],
   }
 }

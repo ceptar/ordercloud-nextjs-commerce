@@ -1,6 +1,6 @@
 import type { NextApiHandler } from 'next'
 import Response from '@vercel/fetch'
-import type { FetchOptions, Response } from '@vercel/fetch'
+import type { FetchOptions } from '@vercel/fetch'
 import type { APIEndpoint, APIHandler } from './utils/types'
 import type { CartSchema } from '../types/cart'
 import type { CustomerSchema } from '../types/customer'
